@@ -1,0 +1,1114 @@
+/* ===================================================
+   AI活用提案ナビ — スタイルシート
+   デザイン方針：深緑×オリーブ×温かいベージュ、日本の業務帳票スタイル
+   =================================================== */
+
+/* ── カラートークン ── */
+:root {
+  /* ブランドカラー */
+  --green-900: #1a3828;
+  --green-800: #234c38;
+  --green-700: #2e6248;
+  --green-600: #3d7a59;
+  --green-500: #4e9470;
+  --green-400: #72b090;
+  --green-200: #b8d8c6;
+  --green-100: #d6ece1;
+  --green-50:  #edf6f1;
+
+  --olive-700: #4a5236;
+  --olive-600: #5f6945;
+  --olive-400: #8a9666;
+  --olive-100: #d9e0c8;
+  --olive-50:  #f0f3e8;
+
+  /* ニュートラル */
+  --sand-900: #2a2822;
+  --sand-800: #3d3b34;
+  --sand-700: #565349;
+  --sand-600: #726f64;
+  --sand-400: #9c9990;
+  --sand-200: #ccc9c0;
+  --sand-100: #e4e1d8;
+  --sand-50:  #f5f3ee;
+  --sand-30:  #faf9f6;
+  --white:    #ffffff;
+
+  /* セマンティック */
+  --error:       #b34040;
+  --error-light: #f8eded;
+  --warning:     #8a6800;
+  --warning-bg:  #fdf6e3;
+
+  /* タイポグラフィ */
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic UI",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    sans-serif;
+  color: var(--sand-900);
+  background: var(--sand-50);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  /* スペーシング */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-card: 0 1px 4px rgba(26, 56, 40, 0.07), 0 0 0 1px rgba(26, 56, 40, 0.05);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  line-height: 1.75;
+}
+
+button, input, textarea, select { font: inherit; }
+button { border: 0; cursor: pointer; }
+
+/* ── アプリシェル ── */
+.app-shell {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ── ヘッダー ── */
+.app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1440px;
+  margin: 0 auto 16px;
+  padding: 20px 26px;
+  background: var(--white);
+  border: 1px solid var(--sand-100);
+  border-left: 5px solid var(--green-700);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.header-main {}
+
+.app-kicker {
+  margin: 0 0 4px;
+  color: var(--olive-600);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.app-header h1 {
+  margin: 0 0 6px;
+  color: var(--green-900);
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.app-desc {
+  margin: 0;
+  color: var(--sand-700);
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+.header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.header-badge {
+  padding: 5px 12px;
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  border-radius: 20px;
+  color: var(--green-700);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ── ワークスペース（2カラム） ── */
+.workspace {
+  display: grid;
+  grid-template-areas:
+    "form preview"
+    "actions preview";
+  grid-template-columns: minmax(400px, 0.95fr) minmax(500px, 1.05fr);
+  align-items: start;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── 共通カードスタイル ── */
+.input-panel,
+.action-panel,
+.proposal-sheet {
+  background: var(--white);
+  border: 1px solid var(--sand-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── 入力パネル ── */
+.input-panel {
+  grid-area: form;
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--green-100);
+}
+
+.panel-subtitle {
+  color: var(--green-700);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.panel-label {
+  color: var(--sand-600);
+  font-size: 0.9rem;
+}
+
+/* ── フォームセクション ── */
+.form-section {
+  padding: 18px 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--sand-100);
+  border-top: 3px solid var(--green-500);
+  border-radius: var(--radius-md);
+}
+
+.form-section-header {
+  margin-bottom: 16px;
+}
+
+.form-section-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.form-section h2 {
+  margin: 0;
+  color: var(--green-900);
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.form-section-desc {
+  margin: 0;
+  color: var(--sand-700);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+/* バッジ */
+.badge-required,
+.badge-optional {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 2px 9px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.badge-required {
+  background: var(--green-700);
+  color: var(--white);
+}
+
+.badge-optional {
+  background: var(--sand-100);
+  color: var(--sand-700);
+}
+
+/* ── 入力例ボックス ── */
+.example-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  background: var(--olive-50);
+  border: 1px solid var(--olive-100);
+  border-radius: var(--radius-md);
+}
+
+.example-label {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  background: var(--olive-600);
+  border-radius: 3px;
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.example-box ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.example-box ul li {
+  color: var(--olive-700);
+  font-size: 0.91rem;
+  line-height: 1.6;
+}
+
+.example-box ul li::before {
+  content: "▸ ";
+  color: var(--olive-400);
+  font-size: 0.8rem;
+}
+
+/* ── ラジオ・チェックボックス ── */
+.radio-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.choice-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 14px;
+  background: var(--sand-30);
+  border: 1px solid var(--sand-100);
+  border-radius: var(--radius-md);
+  color: var(--sand-800);
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+
+.choice-row:has(input:checked) {
+  background: var(--green-50);
+  border-color: var(--green-400);
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.choice-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 12px;
+  background: var(--sand-30);
+  border: 1px solid var(--sand-100);
+  border-radius: var(--radius-md);
+  color: var(--sand-800);
+  font-size: 0.97rem;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.choice-chip--checked {
+  background: var(--green-50);
+  border-color: var(--green-400);
+  color: var(--green-900);
+  font-weight: 700;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--green-600);
+  margin: 0;
+  cursor: pointer;
+}
+
+/* ── テキストエリア・日付・セレクト ── */
+textarea,
+input[type="date"],
+select {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--white);
+  border: 1px solid var(--sand-200);
+  border-radius: var(--radius-md);
+  color: var(--sand-900);
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+textarea:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px var(--green-50);
+}
+
+/* ── 個人情報注意文 ── */
+.privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 11px 14px;
+  background: var(--warning-bg);
+  border: 1px solid #e8d68a;
+  border-radius: var(--radius-md);
+  color: var(--warning);
+  font-size: 0.91rem;
+  line-height: 1.7;
+}
+
+/* ── トグル行 ── */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--sand-30);
+  border: 1px solid var(--sand-100);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  color: var(--sand-800);
+  cursor: pointer;
+}
+
+/* ── 講座フィールド ── */
+.lecture-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.field-label {
+  display: grid;
+  gap: 6px;
+}
+
+.field-label > span {
+  color: var(--sand-700);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.field-label input,
+.field-label select {
+  height: 46px;
+  padding: 0 12px;
+}
+
+/* ── 操作パネル ── */
+.action-panel {
+  grid-area: actions;
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.action-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--sand-100);
+  margin-bottom: 2px;
+}
+
+.action-title {
+  margin: 0 0 4px;
+  color: var(--green-900);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.action-desc {
+  color: var(--sand-600);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── ボタン ── */
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: var(--radius-md);
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  transition: opacity 0.15s, transform 0.1s;
+  width: 100%;
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+.btn-ghost:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--green-700);
+  color: var(--white);
+}
+
+.btn-primary:hover { background: var(--green-800); }
+
+.btn-secondary {
+  background: var(--white);
+  border: 2px solid var(--green-400);
+  color: var(--green-800);
+}
+
+.btn-secondary:hover { background: var(--green-50); }
+
+.btn-ghost {
+  background: var(--white);
+  border: 1px solid var(--sand-200);
+  color: var(--sand-700);
+}
+
+.btn-ghost:hover { background: var(--sand-30); }
+
+button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── ログツール ── */
+.log-tools {
+  display: grid;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--sand-100);
+  margin-top: 4px;
+}
+
+.log-count {
+  margin: 0 0 2px;
+  color: var(--sand-600);
+  font-size: 0.88rem;
+}
+
+.btn-small {
+  min-height: 40px;
+  padding: 0 14px;
+  background: var(--white);
+  border: 1px solid var(--sand-200);
+  color: var(--sand-700);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.btn-small:hover { background: var(--sand-30); }
+
+/* ──────────────────────────────────────────────────
+   提案書プレビュー
+────────────────────────────────────────────────── */
+.proposal-sheet {
+  grid-area: preview;
+  position: sticky;
+  top: 16px;
+  padding: 28px 32px 32px;
+}
+
+.proposal-empty {
+  min-height: 280px;
+}
+
+/* ── 提案書ヘッダー ── */
+.proposal-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--green-900);
+  margin-bottom: 20px;
+}
+
+.proposal-kicker {
+  margin: 0 0 4px;
+  color: var(--olive-600);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.proposal-title {
+  margin: 0;
+  color: var(--green-900);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.proposal-date {
+  color: var(--sand-600);
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.proposal-status--empty {
+  color: var(--sand-400);
+  font-weight: 700;
+}
+
+/* ── 空状態 ── */
+.empty-state {
+  margin-top: 28px;
+  padding: 28px 24px;
+  background: var(--sand-30);
+  border: 1px dashed var(--sand-200);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.empty-state-main {
+  margin: 0 0 8px;
+  color: var(--sand-700);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.empty-state-sub {
+  margin: 0;
+  color: var(--sand-400);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* ── ドキュメントセクション ── */
+.doc-section {
+  margin-top: 20px;
+}
+
+.doc-heading {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px;
+  padding: 8px 14px 8px 12px;
+  background: var(--green-50);
+  border-left: 5px solid var(--green-600);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--green-900);
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+/* ── レベルボックス ── */
+.level-box {
+  padding: 16px 18px;
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  border-radius: var(--radius-md);
+}
+
+.level-title {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green-800);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.level-desc {
+  margin: 0;
+  color: var(--sand-800);
+  line-height: 1.75;
+}
+
+/* ── テーマテーブル ── */
+.theme-table {
+  border: 1px solid var(--sand-100);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.theme-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid var(--sand-100);
+}
+
+.theme-row:last-child { border-bottom: 0; }
+
+.theme-label-col {
+  padding: 14px 12px;
+  background: var(--sand-30);
+  border-right: 1px solid var(--sand-100);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.theme-num {
+  display: block;
+  color: var(--sand-500, var(--sand-600));
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-name {
+  color: var(--green-900);
+  font-size: 0.97rem;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.theme-body-col {
+  padding: 14px 16px;
+}
+
+.theme-category {
+  margin: 0 0 5px;
+  color: var(--olive-600);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.theme-example {
+  margin: 0;
+  color: var(--sand-800);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+.question-box {
+  margin-top: 10px;
+  padding: 10px 13px;
+  background: var(--olive-50);
+  border: 1px solid var(--olive-100);
+  border-radius: var(--radius-md);
+}
+
+.question-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--olive-600);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.question-text {
+  margin: 0;
+  color: var(--sand-900);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ── 困りごとテーブル ── */
+.concern-table {
+  border: 1px solid var(--sand-100);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.concern-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid var(--sand-100);
+}
+
+.concern-row:last-child { border-bottom: 0; }
+
+.concern-label-col {
+  padding: 12px 12px;
+  background: var(--sand-30);
+  border-right: 1px solid var(--sand-100);
+  display: flex;
+  align-items: center;
+}
+
+.concern-label-col strong {
+  color: var(--green-900);
+  font-size: 0.91rem;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.concern-body-col {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.concern-body-col p {
+  margin: 0;
+  color: var(--sand-800);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ── 2カラムセクション ── */
+.doc-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.doc-list {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.doc-list li {
+  color: var(--sand-800);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  padding-bottom: 4px;
+}
+
+/* ── 予約カード ── */
+.reservation-card {
+  margin-top: 22px;
+  padding: 20px 22px;
+  background: var(--white);
+  border: 2px solid var(--green-400);
+  border-radius: var(--radius-lg);
+}
+
+.reservation-card--empty {
+  border-style: dashed;
+  border-color: var(--sand-200);
+}
+
+.reservation-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--green-100);
+}
+
+.reservation-icon {
+  color: var(--green-600);
+  flex-shrink: 0;
+}
+
+.reservation-heading {
+  color: var(--green-800);
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+.reservation-date {
+  margin: 0 0 12px;
+  color: var(--green-900);
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.reservation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.reservation-meta-item {
+  padding: 7px 16px;
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  border-radius: 20px;
+  color: var(--green-800);
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+.reservation-note {
+  margin: 0;
+  color: var(--sand-700);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+/* ── コースグリッド ── */
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.course-tag {
+  padding: 6px 13px;
+  background: var(--white);
+  border: 1px solid var(--green-200);
+  border-radius: 20px;
+  color: var(--green-800);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* ── スタッフメモ ── */
+.staff-memo-text {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--sand-30);
+  border: 1px dashed var(--sand-200);
+  border-radius: var(--radius-md);
+  color: var(--sand-800);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+/* ──────────────────────────────────────────────────
+   レスポンシブ（タブレット〜）
+────────────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .workspace {
+    grid-template-areas:
+      "form"
+      "preview"
+      "actions";
+    grid-template-columns: 1fr;
+  }
+
+  .proposal-sheet {
+    position: static;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+/* ── スマホ ── */
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .app-header,
+  .input-panel,
+  .action-panel,
+  .proposal-sheet {
+    padding: 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .app-header h1 { font-size: 1.55rem; }
+
+  .form-section { padding: 15px; }
+
+  .choice-grid,
+  .lecture-fields,
+  .doc-columns,
+  .theme-row,
+  .concern-row {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-label-col,
+  .concern-label-col {
+    border-right: 0;
+    border-bottom: 1px solid var(--sand-100);
+  }
+
+  .proposal-header { flex-direction: column; align-items: flex-start; }
+  .proposal-title { font-size: 1.6rem; }
+  .reservation-date { font-size: 1.35rem; }
+}
+
+/* ──────────────────────────────────────────────────
+   印刷スタイル — A4縦、2枚以内を目標
+────────────────────────────────────────────────── */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  :root,
+  body {
+    background: #ffffff;
+    color: #111;
+    font-size: 9.5pt;
+  }
+
+  .app-shell { padding: 0; }
+
+  /* ── 非表示にする要素 ── */
+  .no-print,
+  .proposal-empty {
+    display: none !important;
+  }
+
+  /* ── ワークスペース ── */
+  .workspace {
+    display: block;
+    max-width: none;
+    margin: 0;
+  }
+
+  /* ── 提案書カード ── */
+  .proposal-sheet {
+    position: static;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* ── ヘッダー ── */
+  .proposal-header {
+    padding-bottom: 6px;
+    border-bottom-width: 2pt;
+    margin-bottom: 8pt;
+  }
+
+  .proposal-kicker {
+    font-size: 8pt;
+    margin-bottom: 2pt;
+  }
+
+  .proposal-title {
+    font-size: 18pt;
+    letter-spacing: 0;
+  }
+
+  .proposal-date { font-size: 8pt; }
+
+  /* ── セクション共通 ── */
+  .doc-section { margin-top: 8pt; }
+
+  .doc-heading {
+    padding: 4pt 10pt;
+    border-left-width: 3pt;
+    font-size: 10.5pt;
+    margin-bottom: 5pt;
+    border-radius: 0;
+  }
+
+  /* ── レベルボックス ── */
+  .level-box {
+    padding: 7pt 10pt;
+    border-radius: 3pt;
+  }
+
+  .level-title { font-size: 10pt; margin-bottom: 3pt; }
+  .level-desc { font-size: 8.5pt; line-height: 1.45; }
+
+  /* ── テーマテーブル ── */
+  .theme-table,
+  .concern-table {
+    border-radius: 0;
+  }
+
+  .theme-row,
+  .concern-row {
+    grid-template-columns: 95pt 1fr;
+    break-inside: avoid;
+  }
+
+  .theme-label-col,
+  .concern-label-col {
+    padding: 6pt 8pt;
+  }
+
+  .theme-num { font-size: 7.5pt; }
+  .theme-name { font-size: 8.5pt; }
+  .theme-body-col { padding: 6pt 9pt; }
+  .theme-category { font-size: 7.5pt; margin-bottom: 2pt; }
+  .theme-example { font-size: 8pt; line-height: 1.4; }
+
+  .question-box {
+    margin-top: 4pt;
+    padding: 5pt 7pt;
+    border-radius: 2pt;
+  }
+
+  .question-label { font-size: 7.5pt; margin-bottom: 2pt; }
+  .question-text { font-size: 8pt; line-height: 1.4; }
+
+  .concern-label-col strong { font-size: 8.5pt; }
+  .concern-body-col p { font-size: 8pt; line-height: 1.42; }
+
+  /* ── 2カラム ── */
+  .doc-columns { gap: 10pt; }
+  .doc-list li { font-size: 8.5pt; line-height: 1.42; padding-bottom: 2pt; }
+
+  /* ── 予約カード ── */
+  .reservation-card {
+    break-inside: avoid;
+    margin-top: 10pt;
+    padding: 10pt 12pt;
+    border-width: 1.5pt;
+    border-radius: 4pt;
+  }
+
+  .reservation-header {
+    margin-bottom: 5pt;
+    padding-bottom: 5pt;
+  }
+
+  .reservation-heading { font-size: 9.5pt; }
+  .reservation-date { font-size: 17pt; margin-bottom: 5pt; }
+  .reservation-meta { gap: 5pt; margin-bottom: 5pt; }
+  .reservation-meta-item { padding: 3pt 9pt; font-size: 9pt; border-radius: 10pt; }
+  .reservation-note { font-size: 8pt; line-height: 1.4; }
+
+  /* ── コースグリッド ── */
+  .course-grid { gap: 4pt; }
+  .course-tag { padding: 3pt 8pt; font-size: 8pt; border-radius: 10pt; }
+
+  /* ── スタッフメモ ── */
+  .staff-memo-text {
+    break-inside: avoid;
+    padding: 7pt 10pt;
+    font-size: 8.5pt;
+    line-height: 1.42;
+  }
+}
